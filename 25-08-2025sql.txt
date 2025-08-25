@@ -1,0 +1,86 @@
+use placement;
+create table newcategory (
+cid int primary key,
+cname varchar(15) not null,
+descrption varchar(150) not null
+);
+
+insert into newcategory values(101,'electricals','qwertyuioppp'),
+(102,'beauty','qwertyuioppp'),
+(103,'pharma','qwertyuioppp'),
+(104,'clothes','qwertyuioppp');
+
+create table newproduct (
+pid int8 primary key,
+pname varchar(15) not null,
+descrption varchar(150) not null,
+cid int not null,
+foreign key (cid) references category(cid)); 
+
+drop table newproduct;
+insert into newproduct values
+( 902,'i-phone 15','qwertyuioppp',101),
+( 903,'i-phone 16','qwertyuioppp',101),
+( 904,'facial','qwertyuioppp',102),
+( 905,'lipsticks','qwertyuioppp',102),
+( 906,'facewash','qwertyuioppp',102),
+(907,'t-shirts','qwertyuioppp',104),
+(908,'shirts','qwertyuioppp',104),
+(909,'skirts','qwertyuioppp',104);
+
+select * from newcategory;
+select * from  newproduct;
+
+create table newproduct (
+pid int8 primary key,
+pname varchar(15) not null,
+descrption varchar(150) not null,
+cid int not null,
+foreign key (cid) references category(cid)
+on update cascade
+on delete cascade);
+
+delete from newcategory
+where cid=101;
+
+create table wishlist(
+wid int8 primary key,
+pname varchar(15) not null,
+descrption varchar(150) not null,
+pid int8 not null,
+foreign key (pid) references newproduct(pid)
+on update cascade
+on delete cascade);
+
+select * from wishlist;
+select * from newcategory;
+select * from  newproduct;
+
+insert into wishlist values(1,'albendizole','qwertyuiop',902);
+insert into wishlist values(2,'albendizole-2','qwertyuiop',902),
+(3,'t-shirt','qwertyuiop',908),
+(4,'shirt','qwertyuiop',909);
+;
+
+
+
+#alias-----------------------
+select pname as prname 
+from newproduct;
+
+#like operator------------------------------
+select pname from newproduct 
+where pname like 'f%';
+
+select pname from newproduct 
+where pname like '%15';
+
+select pname from newproduct 
+where pname like 's_i%';
+
+select pname from newproduct 
+where pname like 'i%';
+
+
+
+

@@ -1,0 +1,123 @@
+show databases;
+
+create database placement;
+
+use placement;
+
+show databases;
+
+use placement;
+
+create table details(
+ s_id int,
+ s_name varchar(50),
+ s_gender char(1),
+ s_mail varchar(50),
+ s_phn int);
+ 
+ show tables from placement;
+ 
+ describe details;
+ 
+  insert into details (s_id,s_name,s_gender,s_mail,s_phn) values (43110962,'raju','m','bhargavrajugmail.com',8686),(43140058,'gandu','f','gandugmail.com',9542);
+  
+ describe details;
+ 
+ alter table details add column abc_id varchar(15);
+ 
+ select * from details;
+ 
+ insert into details (abc_id) values (1002);
+ 
+ update details 
+ set abc_id=1003
+ where s_id=43110962;
+ 
+ update details
+ set abc_id=1004
+ where s_id=43140058;
+ 
+ insert into details (s_id,s_name,s_gender,s_mail,s_phn) values(1,'rani','m','bhargavraju@gmail.com',86786),(2,'gandu','f','gandu@gmail.com',96542);
+ -- insert into details (s_id,s_name,s_gender,s_mail,s_phn) values(1,'rani','m','bhargavraju@gmail.com',86786),(2,'gandu','f','gandu@gmail.com',96542)
+--  where abc_id=1002;
+
+delete from details 
+where abc_id=1002;
+
+truncate table details;
+
+drop table details;
+
+update details
+set abc_id=1004
+where s_id=43140058;
+
+update details
+set abc_id=1005
+where s_id=1;
+
+update details 
+set abc_id=1006
+where s_id=2;
+
+update details 
+set s_id=3,
+s_name='evaramiru',
+s_gender='m',
+s_mail='evaramiru@gmail.com'
+where abc_id=1002;
+
+update details 
+set s_phn=90590
+where abc_id=1002;
+
+select * from details;
+
+start transaction;
+
+update details
+set s_name='rani'
+where s_id=43140058;
+
+update details
+set s_name='manthri'
+where s_id=1;
+
+update details
+set s_name='donga'
+where s_id=2;
+
+update details
+set s_name='police'
+where s_id=3;
+
+start transaction;
+savepoint A;
+
+alter table details add column salary int;
+
+update details
+set salary=100
+where abc_id=1003;
+
+update details
+set salary=100
+where abc_id=1004;
+
+update details
+set salary=100
+where abc_id=1005;
+
+update details
+set salary=100
+where abc_id=1006;
+
+update details
+set salary=100
+where abc_id=1002;
+
+savepoint B;
+
+rollback to A;
+
+
