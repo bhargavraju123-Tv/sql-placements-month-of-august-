@@ -1,0 +1,143 @@
+SHOW DATABASES;
+USE ORG123;
+
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT(15),
+	JOINING_DATE DATETIME,
+	DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+        
+select * from worker;
+
+-- ----------------------------------------------------------------with/without aggregate fxns
+
+select department, count(department) as dept_count from worker
+group by department 
+order by dept_count asc;
+
+select department from worker
+group by department;
+
+-- -----------------------------------------------------------------
+
+--  1. Count employees not in HR or Admin.
+--  2. Find the highest salary in each department.
+        
+select * from worker;
+-- 1.answer
+select department ,count(department) as employees from worker
+where department not in('hr','admin')
+group by department order by employees;
+
+-- 2.answer
+select department ,max(salary) as high_salary from worker
+group by department order by high_salary;
+
+-- -------------------- offset //limit
+
+select * from worker
+order by worker_id
+limit 2,1000;
+
+-- ------------------------having clause
+select department ,sum(salary) from worker
+group by department having sum(salary)>100000;
+
+
+-- ------------------------------------------- assignment
+
+--  1. Find departments with average salary > 100000.
+--  2. Find departments where max salary is exactly 500000.
+--  3. Find departments with more than 1 employee and total salary > 100000.
+--  4. Find departments with avg salary between 50000 and 200000.
+
+#1.answer-------
+select department, avg(salary) as avg_salary from worker
+group by department having avg(salary) >100000;
+
+#2.answer--------
+select department,max(salary) as max_salary from worker
+group by department having max(salary) = 500000;
+
+#3.----------------------------- 3.Find departments with more than 1 employee and total salary > 100000.
+select department , count(department),sum(salary) from worker
+group by department having count(department)>1 and 
+sum(salary)>100000;
+
+#4.Find departments with avg salary between 50000 and 200000.-------------------------------------
+select department, avg(salary) from worker
+group by department having avg(salary) between 50000 and 200000;
+
+#subqueries-------------------------------------------------------------------
+create table student(sname varchar(50) not null,s_id int8,sec char not null,gmail varchar(50) not null);
+
+insert into student values('babu',123,'a','babu1@gmail.com'),
+						  ('prabhas',456,'a','prabhas@gmail.com'),
+						  ('bhai',789,'a','bhai@gmail.com'),
+						  ('ntr',101,'a','ntr@gmail.com');
+                          
+                          
+                          select * from student;
+create table nationalawards(sname varchar(50) not null,award varchar(50) not null, s_id  char not null);                 
+                           
+                           alter table nationalawards 
+                           modify column s_id int8;
+                            
+insert into nationalawards values('babu','award-1','123'),
+						  ('prabhas','award-1','456'),
+						  ('bhai','award-1','789'),
+						  ('ntr','award-1','101');
+                          
+                          
+                          select * from nationalawards;
+                          
+                          
+-- -----------------------------------------------------------------------------------------------------------------------------------------
+create table award_winners(
+id int,
+name varchar(25),
+award_name varchar(30));
+
+insert into award_winners values(001,'Karthick','Volleyball winners'),(002,'Gopi','Basketball Runners'),(003,'Adib','Oscar winners'),
+(004,'Harij','English SpellBee 2nd Runner-up'),(005,'Loki','Volleyball winners'),(006,'Sakthi','Badminton Nationals runners'),
+(007,'Iqhlas','Debug winners'),(008,'AK','Basketball runners'),(009,'Kamal','Hackathon runners'),
+(010,'Barath','Hackathon winners');
+
+select * from award_winners;
+
+create table students(
+id int,
+name varchar(25));
+
+insert into students values(005,'Loki'),(1001,'Srihari'),(1003,'Dinesh'),(001,'Karthick'),(1005,'Tharun'),
+(1006,'Vamsi'),(1007,'Monish'),(1008,'Rohith'),(1009,'Alwyn'),(1010,'Akash');
+
+select * from students;
+
+select * from students 
+where id=(select id from award_winners where id=5);
+
+select * from students 
+where id=(select id from award_winners where name="karthick");
+
+select * from award_winners
+where id=(select id from students where id=1);
+
+select * from award_winners
+where id=(select id from students where name="Loki");                          
+                          
+
