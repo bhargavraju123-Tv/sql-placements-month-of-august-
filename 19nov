@@ -1,0 +1,189 @@
+package mysqldataBaseConnection;
+
+public class inheritance
+{
+	public static void main(String args[])
+	{
+		nenu ne=new nenu();
+		nana na=new nana();
+		abba ab=new abba();
+		ne.oldbike();
+		
+	}
+}
+class abba
+{
+	void ezidi()
+	{
+		System.out.println("Chana Patha bandi ezidi");
+	}
+	
+	void oldbike()
+	{
+		System.out.println("Chana Patha bandi ezidi");
+	}
+	private final void setup()
+	{
+		System.out.println("10kg bangaram");
+	}
+	private final void setupland()
+	{
+		System.out.println("10cents bhumi");
+	}
+}
+
+class nana extends abba
+	{
+	void ct100()
+	{
+		System.out.println("patha bandi ct100");
+	}
+	
+	void oldbike()
+	{
+		super.oldbike();
+		System.out.println("Patha bandi ct100");
+	}
+}
+
+class nenu extends nana
+{
+	void hornet()
+	{
+		System.out.println("kotha bandi hornet");
+	}
+}
+
+class op
+{
+	void showop()
+	{
+		nenu ne=new nenu();
+		ne.oldbike();
+		nana na=new nana();
+		na.setup();         //line 64,65 errors ndukante paina private final vadina kabati
+		na.setupland();			// super,final keywords
+		
+	}
+}
+
+
+
+
+package mysqldataBaseConnection;
+//
+//public class omrking 
+//{
+//	public static void main(String args[])
+//	{
+//		person1 p=new person1();
+//		p.met();
+//		System.out.print(p.str);
+//	}
+//
+//
+//public static class person1
+//{
+//	String str;
+//	public void met()
+//	{
+//		System.out.print("person 1-met");
+//		str="apple";
+//	}
+//}
+//}
+
+//without static 
+//public class omrking 
+//{
+//    public static void main(String args[])
+//    {
+//        omrking outer = new omrking();       // create OUTER object
+//        person1 p = outer.new person1();     // create INNER object
+//
+//        p.met();
+//        System.out.println(p.str);
+//    }
+//
+//    public class person1
+//    {
+//        String str;
+//
+//        public void met()
+//        {
+//            System.out.println("person1-met");
+//            str = "apple";
+//        }
+//    }
+//}
+
+
+// with static
+
+//public class omrking 
+//{
+//    public static void main(String args[])
+//    {
+//        person1 p = new person1();    // works now
+//        p.met();
+//        System.out.println(p.str);
+//    }
+//
+//    static class person1               // made it STATIC
+//    {
+//        String str;
+//
+//        public void met()
+//        {
+//            System.out.println("person1-met");
+//            str = "apple";
+//        }
+//    }
+//}
+
+public class inneroutterclasses {
+	public static void main(String args[]) {
+
+		Program1 program=new Program1(100);
+		
+		program.addition();
+		
+	}
+}
+class Program1{
+	int marks=95; //class variable
+	//user def methods
+	protected void addition(){
+		int result= marks*100;
+		System.out.println(result);
+		//method local inner class
+		class InsideClass{
+			void division(){
+				System.out.println("method Local inner class output");
+			}
+		}
+	}
+	//initi block
+	{
+		System.out.println("Welcome...!");
+		String date="19th Nov 2025";
+		System.out.println(date);
+	}
+	
+	//constru //def //parame
+	public Program1() {
+		System.out.println("Iam a def const..");
+	}
+	public Program1(int a){
+		a=marks+a;
+		System.out.println(a);
+	}
+	
+	
+}
+
+
+
+
+
+
