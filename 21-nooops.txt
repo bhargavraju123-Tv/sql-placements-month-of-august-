@@ -1,0 +1,223 @@
+package mysqldataBaseConnection;
+import java.util.*;
+public class polymorph
+{
+	public static void main(String args[])
+	{
+		f na=new f();
+		na.bike();
+		me m=new me();
+		m.newbike(5,10);
+	}
+}
+class gf
+{
+	void bike()
+	{
+		System.out.println("ezidi");
+	}
+}
+
+class f extends gf
+{
+	// @overridden
+	void bike()
+	{
+		super.bike();
+		System.out.println("ct100");
+	}
+}
+
+class me extends f
+{
+	int a=2;
+	void newbike(int a)
+	{
+		this.a=a;
+		System.out.print("usage of this");
+	}
+	
+	void newbike(int a,int b)
+	{
+		System.out.println("use of paramatarised methods");
+		System.out.println("method overloading");
+	}
+}
+
+
+
+________________________________________________________________________________________
+
+
+
+
+package mysqldataBaseConnection;
+import java.util.*;
+public class encapsulation 
+{
+	public static void main(String args[])
+	{
+		phnpe obj=new phnpe();
+		obj.checkBalance();
+		obj.checkaccNumber();
+	}
+}
+
+class sbi
+{
+	long phn_num=78688921;
+	String acc_holder_name="gani gandu";
+	private double acc_balance=1500000.0;
+	private long acc_num=12345678;
+	
+	double getacc_balance()
+	{
+		return acc_balance;
+	}
+	double getacc_num()
+	{
+		return acc_num;
+	}
+}
+
+class phnpe extends sbi
+{
+	void checkBalance()
+	{
+		System.out.println(getacc_balance());
+	}
+	void checkaccNumber()
+	{
+		System.out.println(getacc_num());
+	}
+}
+
+
+
+__________________________________________________________
+
+package mysqldataBaseConnection;
+import java.util.*;
+public class abstraction 
+{
+	Scanner sc=new Scanner(System.in);
+	sbi1 r=new sbi1();
+	r.op();
+	r.agriLoan();
+	r.eduLoan();
+	r.goldLoan();
+}
+
+abstract class rbi1
+{
+	private final void secret()
+	{
+		System.out.print("rules & guidelines");
+	}
+	void op()
+	{
+		System.out.println("its abstract class");
+	}
+	abstract void agriLoan();
+	abstract void eduLoan();
+	abstract void goldLoan();
+}
+
+ class sbi1 extends rbi1
+{
+	void agriLoan()
+	{
+		System.out.println("5%");
+	}
+	void eduLoan()
+	{
+		System.out.println("6%");
+	}
+	void goldLoan()
+	{
+		System.out.println("8%");
+	}
+//	sbi.op();
+}
+
+
+
+
+
+package mysqldataBaseConnection;
+
+public class exceptionhandling 
+{
+public static void main(String args[])
+{
+	try{
+		int a=10;
+		int b=0;
+		int ans=a/b;
+	}
+	catch(ArithmeticException e)
+	{
+		System.out.println("error");
+	}
+}
+}
+
+
+
+___________________________________________________________
+package mysqldataBaseConnection;
+import java.util.*;
+public class inheriex
+{
+	public static void main(String args[])
+	{
+		Scanner s=new Scanner(System.in);
+		s.ip();
+	}
+}
+
+
+class calci
+{
+	void ip()
+	{
+	Scanner sc=new Scanner(System.in);
+	double n=sc.nextDouble();
+	double m=sc.nextDouble();
+	}
+}
+
+class add extends calci
+{
+	double add(double n,double m)
+	{
+		double ansadd=n+m;
+		return ansadd;
+	}
+}
+class sub extends add
+{
+	double sub(double n,double m)
+	{
+		double anssub=n-m;
+		return anssub;
+	}
+}
+
+class mul extends sub
+{
+	double mul(double n,double m)
+	{
+		double ansmul=n*m;
+		return ansmul;
+	}
+}
+
+class div extends mul
+{
+	double div(double n,double m)
+	{
+		double ansdiv=n/m;
+		return ansdiv;
+	}
+}
