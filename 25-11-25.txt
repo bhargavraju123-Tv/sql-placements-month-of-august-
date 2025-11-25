@@ -1,0 +1,230 @@
+package mysqldataBaseConnection;
+//
+import java.util.Scanner;
+//
+//public class MultiThreads {
+//
+//	public static void main(String args[]) {
+//		// object creation for thread classes
+//		Minute num = new Minute();
+//		Seconds alp = new Seconds();
+//
+//		// start the thread
+//		num.start();
+//		alp.start();
+//
+//	}
+//
+//}
+//
+//class Minute extends Thread {
+//	int a = 0;
+//
+//	public void run() {
+//
+//		try {
+//			for (int i = 0; i <= 59; i++) {
+//				try {
+//					System.out.println("Minutes : " + a);
+//					a++;
+//					Thread.sleep(60000);
+//				} catch (Exception e) {
+//					System.out.println(e);
+//				}
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//
+//	}
+//}
+//
+//class Seconds extends Thread {
+//	int a = 0;
+//
+//	public void run() {
+//		try {
+//			for (int i = 0; i <= 59; i++) {
+//
+//				try {
+//					System.out.println("Seconds :" + a);
+//					a++;
+//					Thread.sleep(1000);
+//				} catch (Exception e) {
+//					System.out.println("Issues in Minutes Thread class");
+//				}
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//
+//	}
+//}
+
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running: " + Thread.currentThread().getName());
+        try {
+            Thread.sleep(1000); // pause for 1 second
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted: " + e.getMessage());
+        }
+        System.out.println("Thread finished: " + Thread.currentThread().getName());
+    }
+}
+
+public class MultiThreads {
+    public static void main(String[] args) throws InterruptedException {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.start();   // starts new thread
+        t2.start();
+
+        t1.join();    // wait until t1 finishes
+        t2.join();    // wait until t2 finishes
+
+        System.out.println("Main thread finished");
+    }
+}
+
+
+
+
+
+
+
+//
+//
+//import java.util.Scanner;
+//
+//public class Main {
+//	public static void main(String args[]) {
+//
+//		// object creation for thread classes
+//		Numeric num = new Numeric();
+//		Alpha alp = new Alpha();
+//
+//		// start the thread
+//		num.start(); 
+//		
+//		
+//		try{
+//		    num.join();
+//		}
+//		catch(Exception e){
+//		    System.out.print("Hi");
+//		}
+//		alp.start();
+//		// get the name of the thread
+//		System.out.println("Number Thread : " + num.getName());
+//		System.out.println("Alphabets Thread : " + alp.getName());
+//
+//		// get the priority
+//		System.out.println("Number Thread : " + num.getPriority());
+//		System.out.println("Alphabets Thread : " + alp.getPriority());
+//
+//		// check the state of the thread
+//		System.out.println("Number Thread : " + num.getState());
+//		System.out.println("Alphabets Thread : " + alp.getState());
+//
+//		// checking the current thread
+//		System.out.println(Thread.currentThread().getName());
+//
+//		// set the name to thread
+//		num.setName("Jayanth");
+//		alp.setName("Karthick");
+//
+//		// check the state of the thread
+//		System.out.println("Number Thread : " + num.getState());
+//		System.out.println("Alphabets Thread : " + alp.getState());
+//
+//		// checking whether its alive or not
+//
+//		if (num.isAlive()) {
+//		System.out.println("Jayanth thread is Alive");
+//		} else {
+//			System.out.println("Jayanth Thread is dead");
+//		}
+//
+//		if (alp.isAlive()) {
+//		System.out.println("Karthick thread is Alive");
+//		} else {
+//		System.out.println("Karthiread is dead");
+//		}
+//
+//	}
+//
+//}
+//
+//class Numeric extends Thread {
+//	int a = 0;
+//
+//	public void run() {
+//
+//		try {
+//			for (int i = 0; i <= 10; i++) {
+//				a++;
+//		System.out.println("Numeric Thread : " + a);
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//
+//	}
+//}
+//
+//class Alpha extends Thread {
+//	char a = 'A';
+//
+//	public void run() {
+//		try {
+//			for (int i = 0; i <= 25; i++) {
+//
+//		System.out.println("Alpha Thread : " + a);
+//				a++;
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//
+//	}
+//}
+
+
+
+
+
+
+
+
+package mysqldataBaseConnection;
+
+import java.util.*;
+
+public class strings {
+	public static void main(String... args) {
+		stringExample.strings();
+		stringChild.stringss();
+		System.out.println(stringExample.s1);
+	}
+}
+
+class stringExample {
+	static String s1 = "Sathyabama";
+	static void strings() {
+		
+		StringBuilder s2 = new StringBuilder("Sathyabama");
+		StringBuffer s3 = new StringBuffer("Sathyabama");
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+	}
+}
+class stringChild extends stringExample{
+	static void stringss() 
+	{
+		s1=s1.concat("hi_");
+	}
+}
