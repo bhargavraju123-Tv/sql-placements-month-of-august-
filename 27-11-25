@@ -1,0 +1,182 @@
+package mysqldataBaseConnection;
+import java.util.*;
+import java.util.Set;
+public class setMethods 
+{
+	public static void main(String ...raju)
+	{
+		HashSet<Object> set=new HashSet<>();
+		set.add("mb");
+		set.add("pb");
+		set.add("bhai");
+		set.add("ntr");
+		set.add("pspk");
+		set.add("pspk");
+		System.out.println("duplicate check of hashset : "+set);
+		System.out.println("order kuda theda ga undhi,its changing");
+		set.clear();
+		set.add(200);
+		set.add(341);
+		set.add(3);
+		set.add(400);
+		set.add(null);
+		System.out.println("sort check : "+set);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		LinkedHashSet<Object> set1=new LinkedHashSet<>();
+		set1.add("mb");
+		set1.add("pb");
+		set1.add("bhai");
+		set1.add("ntr");
+		set1.add("pspk");
+		set1.add("pspk");
+		System.out.println("duplicate check of linkedhashset ::: "+set1);
+		System.out.println("order kuda theda ga undhi,its changing");
+		set1.clear();
+		set1.add(200);
+		set1.add(341);
+		set1.add(3);
+		set1.add(400);
+		set1.add(null);
+		System.out.println("sort check : "+set1);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		TreeSet<Object> set2=new TreeSet<>();
+		set2.add("a");
+		set2.add("b");
+		set2.add("bhai");
+		set2.add("nr");
+		set2.add("c");
+		set2.add("nr");
+		System.out.println("duplicate check of treeset ::: "+set2);
+		System.out.println("order kuda theda ga undhi,its changing");
+		set2.clear();
+		set2.add(200);
+		set2.add(341);
+		set2.add(3);
+		set2.add(400);
+		set2.add(null);
+		System.out.println("sort check : "+set2);
+	}
+
+
+
+
+
+
+  ____________________________________
+
+
+
+
+
+  package mysqldataBaseConnection;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.Collections.*;
+
+public class lists {
+	public static void main(String... args) {
+		int arr[] = new int[5];
+		ArrayList arrlists = new ArrayList();
+		LinkedList li1 = new LinkedList();
+		ArrayList<Integer> al = new ArrayList<>();
+		LinkedList<Integer> li = new LinkedList<>();
+
+//		arrlists.add("java");
+//		arrlists.add(100);
+//		arrlists.add(10000.234);
+//		arrlists.add(12345);
+//		arrlists.add("java evara merantha");
+//		arrlists.add('c');
+//		arrlists.add(10000.234 * 0);
+//		arrlists.add(12345 - 10000);
+//		
+//		li1.add("qwerrt");
+//		li1.add(123458765);
+//		li1.add(123458765-12134567);
+//		li1.add(12/19);
+//		li1.add(34%2);
+//		
+//		System.out.println(li1);
+//		System.out.println(arrlists);
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("ip : ");
+		
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+			String value=sc.nextLine();
+
+			arrlists.add(value);
+
+		}
+		System.out.println(arrlists);
+	}
+}
+
+
+
+_____________________________________________________
+
+
+
+
+package mysqldataBaseConnection;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections.*;
+import java.util.LinkedList;
+public class listMethods 
+{
+	public static void main(String ...args)
+	{
+		LinkedList ll1=new LinkedList();
+		LinkedList li=new LinkedList();
+		li.add("Apple");
+		li.add("Ball");
+		li.add("Cat");
+		System.out.println("Before :"+li);
+		li.add(0,"Amma");
+		System.out.println("after :"+li);
+		ll1.add("Ravi");
+		ll1.add("suraj");
+		ll1.add("rishab");
+		System.out.println("1st linkedlist :"+ll1);
+		ll1.addAll(li);
+		System.out.println("After merging both linkedlists :"+ll1);
+		li.remove("Apple");
+		System.out.println("After removing particular element :"+li);
+		li.removeLast();
+		System.out.println(li);
+		
+		
+		ArrayList<String> al=new ArrayList<String>();  
+        System.out.println("Is ArrayList Empty: "+al.isEmpty());  
+        al.add("Ravi");    
+        al.add("Vijay");    
+        al.add("Ajay");    
+        System.out.println("After Insertion");  
+        System.out.println("Is ArrayList Empty: "+al.isEmpty());   
+	}
+	
+}
+
+}
